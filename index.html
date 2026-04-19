@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PCB Trip — May 8–11</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal: #0D9E75;
+      --teal-light: #1DC592;
+      --teal-dark: #0A7055;
+      --sand: #F5EDD9;
+      --sand-dark: #E8D9B8;
+      --coral: #F07050;
+      --sky: #4AB5E8;
+      --navy: #1A3A5C;
+      --text: #0F1E28;
+      --text-muted: #3D5060;
+      --border: rgba(0,0,0,0.08);
+      --white: #ffffff;
+      --card-bg: rgba(255,255,255,0.85);
+      --radius: 16px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 48px rgba(0,0,0,0.14);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #E8F4F0;
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      background: linear-gradient(145deg, #0A4F6E 0%, #0D8C6A 40%, #0DBFAB 80%, #4AB5E8 100%);
+      padding: 60px 24px 80px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 200'%3E%3Cpath fill='%23E8F4F0' fill-opacity='1' d='M0,128L48,117.3C96,107,192,85,288,90.7C384,96,480,128,576,133.3C672,139,768,117,864,101.3C960,85,1056,75,1152,80C1248,85,1344,107,1392,117.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") bottom / cover no-repeat;
+      pointer-events: none;
+    }
+
+    .hero-waves {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .hero-emoji {
+      font-size: 52px;
+      margin-bottom: 16px;
+      display: block;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 6vw, 56px);
+      color: #fff;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.2);
+      margin-bottom: 12px;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 400;
+      margin-bottom: 28px;
+    }
+
+    .hero-pills {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 7px 16px;
+      border-radius: 99px;
+    }
+
+    /* MAIN CONTENT */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 16px 60px;
+    }
+
+    /* TABS */
+    .tab-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 28px 0 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: linear-gradient(to bottom, #E8F4F0 80%, transparent);
+      padding-top: 20px;
+      padding-bottom: 12px;
+    }
+
+    .tab-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 18px;
+      border-radius: 99px;
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .tab-btn:hover:not(.active) {
+      border-color: var(--teal);
+      color: var(--teal);
+      transform: translateY(-1px);
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--teal), var(--teal-light));
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(13,158,117,0.35);
+      transform: translateY(-1px);
+    }
+
+    .tab-icon { font-size: 15px; }
+
+    /* PANELS */
+    .panel { display: none; animation: fadeUp 0.25s ease; }
+    .panel.active { display: block; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* DAY HEADER */
+    .day-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      margin-bottom: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .day-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--teal), var(--sky));
+      color: #fff;
+      font-weight: 700;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(13,158,117,0.3);
+    }
+
+    .day-badge .day-num { font-size: 22px; line-height: 1; }
+    .day-badge .day-label { font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; }
+
+    .day-info-title { font-size: 17px; font-weight: 600; color: var(--text); }
+    .day-info-sub { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+    /* TIMELINE */
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 11px;
+      top: 12px;
+      bottom: 12px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--teal), var(--sky), transparent);
+      border-radius: 2px;
+    }
+
+    .stop {
+      position: relative;
+      margin-bottom: 18px;
+    }
+
+    .stop-dot {
+      position: absolute;
+      left: -25px;
+      top: 10px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2.5px solid;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    /* dot colors */
+    .d-drive { background: #D5D3CA; border-color: #6B6961; }
+    .d-food  { background: #FDD58C; border-color: #C28020; }
+    .d-beach { background: #A8E8D8; border-color: var(--teal); }
+    .d-boat  { background: #B8D8F8; border-color: var(--sky); }
+    .d-night { background: #D0CCFF; border-color: #6057CC; }
+    .d-free  { background: #FFBBD0; border-color: #C04070; }
+
+    .stop-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      box-shadow: var(--shadow);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .stop-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .stop-time {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 4px;
+    }
+
+    .stop-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .stop-desc {
+      font-size: 13.5px;
+      color: #2E4050;
+      line-height: 1.65;
+    }
+
+    .stop-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11.5px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 99px;
+    }
+
+    .t-drive { background: #EEECEA; color: #4A4840; }
+    .t-food  { background: #FEF5E0; color: #8A5C00; }
+    .t-beach { background: #E2F5EE; color: #0A6E48; }
+    .t-boat  { background: #E4F2FF; color: #1565C0; }
+    .t-night { background: #EFEDFF; color: #4B42B0; }
+    .t-free  { background: #FDEAF1; color: #9C2855; }
+
+    /* INFO BOXES */
+    .info-box {
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      margin-top: 20px;
+      border: 1.5px solid;
+    }
+
+    .info-box.teal {
+      background: linear-gradient(135deg, rgba(13,158,117,0.06), rgba(13,158,117,0.02));
+      border-color: rgba(13,158,117,0.2);
+    }
+
+    .info-box.sky {
+      background: linear-gradient(135deg, rgba(74,181,232,0.06), rgba(74,181,232,0.02));
+      border-color: rgba(74,181,232,0.2);
+    }
+
+    .info-box.sand {
+      background: linear-gradient(135deg, rgba(240,112,80,0.06), rgba(240,112,80,0.02));
+      border-color: rgba(240,112,80,0.2);
+    }
+
+    .info-box-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .info-box.sky .info-box-label { color: #1565C0; }
+    .info-box.sand .info-box-label { color: #B84020; }
+
+    .info-box-body {
+      font-size: 13.5px;
+      color: #2E4050;
+      line-height: 1.7;
+    }
+
+    .info-box-body strong { color: var(--text); }
+
+    /* BUDGET */
+    .budget-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 500px) { .budget-grid { grid-template-columns: 1fr; } }
+
+    .budget-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .budget-card-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .budget-card-value {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--teal);
+      line-height: 1;
+    }
+
+    .budget-card-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .budget-total-card {
+      background: linear-gradient(135deg, var(--teal), var(--teal-light));
+      color: #fff;
+      border: none;
+    }
+
+    .budget-total-card .budget-card-label { color: rgba(255,255,255,0.8); }
+    .budget-total-card .budget-card-value { color: #fff; }
+    .budget-total-card .budget-card-sub { color: rgba(255,255,255,0.75); }
+
+    .line-items {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .line-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 13px 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      transition: background 0.15s;
+    }
+
+    .line-item:last-child { border-bottom: none; }
+    .line-item:hover { background: rgba(13,158,117,0.04); }
+
+    .line-item-name { color: var(--text-muted); flex: 1; }
+    .line-item-val { color: var(--text); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+    /* CHECKLIST */
+    .checklist {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-top: 20px;
+    }
+
+    .checklist-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 14px 18px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 13px 18px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .check-item:last-child { border-bottom: none; }
+
+    .check-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .check-item strong { color: var(--text); }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: var(--text-muted);
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="hero-emoji">🌊</span>
+    <div class="hero-title">Panama City Beach</div>
+    <div class="hero-sub">Atlanta → PCB · May 8–11, 2025</div>
+    <div class="hero-pills">
+      <span class="hero-pill">🧑‍🤝‍🧑 8 People</span>
+      <span class="hero-pill">⛵ Pontoon Boat</span>
+      <span class="hero-pill">🏝️ Shell Island</span>
+      <span class="hero-pill">🤿 Snorkeling</span>
+      <span class="hero-pill">🛥️ Jet Skis</span>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="container">
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="show('d1',this)">
+        <span class="tab-icon">🚗</span> May 8 — Arrive
+      </button>
+      <button class="tab-btn" onclick="show('d2',this)">
+        <span class="tab-icon">⛵</span> May 9 — Boat Day
+      </button>
+      <button class="tab-btn" onclick="show('d3',this)">
+        <span class="tab-icon">🛥️</span> May 10 — Flex Day
+      </button>
+      <button class="tab-btn" onclick="show('d4',this)">
+        <span class="tab-icon">🏠</span> May 11 — Head Home
+      </button>
+      <button class="tab-btn" onclick="show('budget',this)">
+        <span class="tab-icon">💰</span> Budget
+      </button>
+    </div>
+
+    <!-- DAY 1 -->
+    <div id="d1" class="panel active">
+      <div class="day-header">
+        <div class="day-badge">
+          <span class="day-num">8</span>
+          <span class="day-label">May</span>
+        </div>
+        <div>
+          <div class="day-info-title">Arrival Day — Atlanta → PCB</div>
+          <div class="day-info-sub">~5.5 hr drive · Check in · First night out</div>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="stop">
+          <div class="stop-dot d-drive"></div>
+          <div class="stop-card">
+            <div class="stop-time">9:00 AM</div>
+            <div class="stop-name">Depart Atlanta</div>
+            <div class="stop-desc">Leave by 9am to arrive around 2:30–3pm. Take I-85 S → US-431 S → US-231 S into Panama City. About 5.5 hrs. Stop halfway around Dothan, AL for gas + breakfast snacks.</div>
+            <div class="stop-tags">
+              <span class="tag t-drive">🚗 Drive (~5.5 hrs)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-dot d-food"></div>
+          <div class="stop-card">
+            <div class="stop-time">~2:30 PM — First Meal in PCB</div>
+            <div class="stop-name">Grab a late lunch</div>
+            <div class="stop-desc">Something casual near your Airbnb. <strong>Wicked Wheel</strong> (bar & grill, great fried chicken) or <strong>Runaway Island</strong> (right on the beach) are solid options for a big group without a reservation.</div>
+            <div class="stop-tags">
+              <span class="tag t-food">🍔 Lunch (~$20/person)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-dot d-beach"></div>
+          <div class="stop-card">
+            <div class="stop-time">4:00 PM — Check In</div>
+            <div class="stop-name">Airbnb check-in + beach sunset</div>
+            <div class="stop-desc">Drop bags, get settled. Check-in is after 4pm. Head straight to the beach for sunset — May sunsets in PCB are around 8pm.</div>
+            <div class="stop-tags">
+              <span class="tag t-beach">🏖️ Beach</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-dot d-food"></div>
+          <div class="stop-card">
+            <div class="stop-time">8:00 PM</div>
+            <div class="stop-name">Dinner + first night out</div>
+            <div class="stop-desc">Cook at the Airbnb to save money, or grab something quick nearby. Then hit <strong>Salty Goat Saloon</strong> for live music and cheap drinks — perfect low-key first night for a group.</div>
+            <div class="stop-tags">
+              <span class="tag t-food">🍽️ Dinner</span>
+              <span class="tag t-night">🌙 Nightlife</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box sand">
+        <div class="info-box-label">⚠️ Heads Up</div>
+        <div class="info-box-body">
+          Book your pontoon rental <strong>before you leave Atlanta</strong> — 8-hour full-day boats for 8 people fill up fast in May. Top options: <strong>Adventures at Sea</strong>, <strong>Sunshine Watersports PC</strong>, and <strong>Shell Island Pontoon Boats</strong> — all on N. Lagoon Dr, ~10 min from Shell Island.<br><br>
+          Anyone born after Jan 1, 1988 who drives the boat needs a Florida boater safety certificate — get it free online before the trip at <strong>boat-ed.com</strong>.
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div id="d2" class="panel">
+      <div class="day-header">
+        <div class="day-badge" style="background: linear-gradient(135deg, #1565C0, #4AB5E8);">
+          <span class="day-num">9</span>
+          <span class="day-label">May</span>
+        </div>
+        <div>
+          <div class="day-info-title">Boat Day — Shell Island</div>
+          <div class="day-info-sub">Full day pontoon · Snorkeling · Dolphins · Schooners dinner</div>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="stop">
+          <div class="stop-dot d-food"></div>
+          <div class="stop-card">
+            <div class="stop-time">7:30–8:00 AM</div>
+            <div class="stop-name">Airbnb breakfast + pack the cooler</div>
+            <div class="stop-desc">Bagels, eggs, waffles — make it at the Airbnb. Big day on the water, so fuel up. Pack a cooler the night before: water, drinks, snacks, sandwiches for lunch on the boat.</div>
+            <div class="stop-tags">
+              <span class="tag t-food">🥚 Breakfast (cook in)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-dot d-boat"></div>
+          <div class="stop-card">
+            <div class="stop-time">9:00 AM — 5:00 PM</div>
+            <div class="stop-name">Full-day pontoon → Shell Island</div>
+            <div class="stop-desc">Pick up the pontoon (typically launches 9am). Cruise ~15–20 min across Grand Lagoon to Shell Island — a protected barrier island with no cars, white sand, and clear shallow water. Anchor on the bay side, wade to the beach, snorkel, play games on board, explore. You may spot dolphins on the way. Bring the snorkel gear, a bluetooth speaker, and sunscreen.</div>
+            <div class="stop-tags">
+              <span class="tag t-boat">⛵ Pontoon · 8 hrs</span>
+              <span class="tag t-beach">🏝️ Shell Island</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-dot d-food"></div>
+          <div class="stop-card">
+            <div class="stop-time">~1:00 PM</div>
+            <div class="stop-name">Lunch on the boat</div>
+            <div class="stop-desc">Whatever you packed in the cooler. The island has no food vendors — this is where pre-packing pays off. Sandwiches, chips, fruit, drinks.</div>
+            <div class="stop-tags">
+              <span class="tag t-food">🥪 Lunch (packed)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-dot d-food"></div>
+          <div class="stop-card">
+            <div class="stop-time">6:30 PM</div>
+            <div class="stop-name">Dinner out — Schooners</div>
+            <div class="stop-desc">Beachfront seafood, casual vibe, solid happy hour (half off 3–5pm if you make it back early enough). Great after a full day on the water. Big portions, fun atmosphere.</div>
+            <div class="stop-tags">
+              <span class="tag t-food">🦞 Dinner (~$20/person)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box sky">
+        <div class="info-box-label" style="color:#1565C0;">🤿 Shell Island Tips</div>
+        <div class="info-box-body">
+          Anchor on the <strong>bay side</strong> (calmer) and walk across the narrow island to the Gulf side for the clearer snorkeling water. The snorkeling is best near the jetties at the eastern tip — look for sand dollars, crabs, stingrays, and small reef fish.<br><br>
+          Bring reef-safe sunscreen, water shoes (the shells can be sharp), and a portable anchor.
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 3 -->
+    <div id="d3" class="panel">
+      <div class="day-header">
+        <div class="day-badge" style="background: linear-gradient(135deg, #9C2855, #F07090);">
+          <span class="day-num">10</span>
+          <span class="day-label">May</span>
+        </div>
+        <div>
+          <div class="day-info-title">Flex Day — Jet Skis & St. Andrews</div>
+          <div class="day-info-sub">Jet skis · State park · Last night out</div>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="stop">
+          <div class="stop-dot d-food"></div>
+          <div class="stop-card">
+            <div class="stop-time">9:00 AM</div>
+            <div class="stop-name">Breakfast — Airbnb or bagel run</div>
+            <div class="stop-desc">Lazy morning. Cook in or grab something quick nearby. Recovery day vibe after the big boat day.</div>
+            <div class="stop-tags">
+              <span class="tag t-food">🍳 Breakfast</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-dot d-boat"></div>
+          <div class="stop-card">
+            <div class="stop-time">11:00 AM</div>
+            <div class="stop-name">Jet ski rentals</div>
+            <div class="stop-desc">Hit <strong>Adventures at Sea</strong> or <strong>Sunshine Watersports</strong> for jet skis. For 8 people you'll want 4 skis minimum — most rentals are 1 hr minimum and run ~$80–100/ski/hr. Best done in the late morning before afternoon chop picks up. Sunshine Watersports does guided tours to Shell Island on jet skis too if you want a different angle.</div>
+            <div class="stop-tags">
+              <span class="tag t-boat">🛥️ Jet Skis (~$45/person)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-dot d-beach"></div>
+          <div class="stop-card">
+            <div class="stop-time">1:30 PM</div>
+            <div class="stop-name">St. Andrews State Park</div>
+            <div class="stop-desc">Best beach in the area — $8/car, way less crowded than the strip. Tide pools, calm kiddie cove, great snorkeling near the jetty. Bring your own gear since you already have it. Hang out for the afternoon.</div>
+            <div class="stop-tags">
+              <span class="tag t-beach">🏞️ St. Andrews</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-dot d-food"></div>
+          <div class="stop-card">
+            <div class="stop-time">7:00 PM</div>
+            <div class="stop-name">Dinner — McGuire's Irish Pub</div>
+            <div class="stop-desc">A PCB institution. Huge portions, great steaks, live music, fun atmosphere. Works great for a big group. Known for their ribeyes and house-made root beer. <strong>Make a reservation</strong> — it gets packed.</div>
+            <div class="stop-tags">
+              <span class="tag t-food">🥩 Dinner (~$20/person)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-dot d-night"></div>
+          <div class="stop-card">
+            <div class="stop-time">9:30 PM</div>
+            <div class="stop-name">Last night out</div>
+            <div class="stop-desc">Bar hop along Front Beach Rd. <strong>Salty Goat</strong> for live music, <strong>Runaway Island</strong> for beach bar vibes, or just grab drinks somewhere with a view. Last night — make it count.</div>
+            <div class="stop-tags">
+              <span class="tag t-night">🌙 Nightlife</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box teal">
+        <div class="info-box-label">💡 Flex Options</div>
+        <div class="info-box-body">
+          If the group wants to swap something: <strong>Pier Park</strong> is a big outdoor mall nearby for shopping/mini golf. <strong>Coconut Creek</strong> has a giant maze + 3 mini golf courses for $30/person unlimited. Or just do another beach day — May weather is usually perfect and not too hot yet.
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 4 -->
+    <div id="d4" class="panel">
+      <div class="day-header">
+        <div class="day-badge" style="background: linear-gradient(135deg, #5F5E5A, #9A9890);">
+          <span class="day-num">11</span>
+          <span class="day-label">May</span>
+        </div>
+        <div>
+          <div class="day-info-title">Homeward Bound</div>
+          <div class="day-info-sub">Pack up · Last beach dip · Drive back to Atlanta</div>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="stop">
+          <div class="stop-dot d-food"></div>
+          <div class="stop-card">
+            <div class="stop-time">7:30 AM</div>
+            <div class="stop-name">Quick breakfast + pack up</div>
+            <div class="stop-desc">Checkout is before 10am, so set an alarm. Grab quick breakfast — bagels, cereal, whatever's left. Do a sweep of the Airbnb before leaving (chargers, snorkel gear, etc.).</div>
+            <div class="stop-tags">
+              <span class="tag t-food">🍞 Breakfast (cook in)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-dot d-beach"></div>
+          <div class="stop-card">
+            <div class="stop-time">9:00 AM — optional</div>
+            <div class="stop-name">Quick final beach stop</div>
+            <div class="stop-desc">If checkout is smooth, there's time for one last walk on the beach or a dip before hitting the road. Park at a public beach access point.</div>
+            <div class="stop-tags">
+              <span class="tag t-beach">🌅 Optional beach</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-dot d-drive"></div>
+          <div class="stop-card">
+            <div class="stop-time">10:00–10:30 AM</div>
+            <div class="stop-name">Head back to Atlanta</div>
+            <div class="stop-desc">Leave by 10:30am latest to comfortably arrive by 4:30–5pm. Stop around Dothan or Troy, AL for gas and a lunch break. Should land back in Atlanta right on time by 5–6pm.</div>
+            <div class="stop-tags">
+              <span class="tag t-drive">🚗 Drive (~5.5 hrs)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box teal">
+        <div class="info-box-label">🚘 Drive-Home Tip</div>
+        <div class="info-box-body">
+          Grab food from a local spot in PCB before you leave — avoids fast food and gives you one last taste of the trip. Schooners does lunch, or grab sandwiches from a grocery store. Traffic through Dothan and Montgomery is light on Sundays until early afternoon.
+        </div>
+      </div>
+    </div>
+
+    <!-- BUDGET -->
+    <div id="budget" class="panel">
+      <div class="day-header">
+        <div class="day-badge" style="background: linear-gradient(135deg, #B84020, var(--coral));">
+          <span style="font-size:24px;">💰</span>
+        </div>
+        <div>
+          <div class="day-info-title">Estimated Trip Cost</div>
+          <div class="day-info-sub">Per person · 8 people total · May 8–11</div>
+        </div>
+      </div>
+
+      <div class="budget-grid">
+        <div class="budget-card">
+          <div class="budget-card-label">Airbnb</div>
+          <div class="budget-card-value">~$104</div>
+          <div class="budget-card-sub">$834 ÷ 8 · 3 nights</div>
+        </div>
+        <div class="budget-card">
+          <div class="budget-card-label">Meals</div>
+          <div class="budget-card-value">~$140</div>
+          <div class="budget-card-sub">7 meals × $20</div>
+        </div>
+        <div class="budget-card">
+          <div class="budget-card-label">Pontoon Boat</div>
+          <div class="budget-card-value">~$50–75</div>
+          <div class="budget-card-sub">$400–600 total ÷ 8</div>
+        </div>
+        <div class="budget-card">
+          <div class="budget-card-label">Jet Skis</div>
+          <div class="budget-card-value">~$45</div>
+          <div class="budget-card-sub">4 skis × $90/hr ÷ 8</div>
+        </div>
+        <div class="budget-card">
+          <div class="budget-card-label">Gas</div>
+          <div class="budget-card-value">~$12–15</div>
+          <div class="budget-card-sub">$50/car × 2 cars ÷ 8</div>
+        </div>
+        <div class="budget-card">
+          <div class="budget-card-label">Drinks & Misc</div>
+          <div class="budget-card-value">~$50–80</div>
+          <div class="budget-card-sub">Nightlife + St. Andrews</div>
+        </div>
+        <div class="budget-card budget-total-card" style="grid-column: 1 / -1;">
+          <div class="budget-card-label">Total per person</div>
+          <div class="budget-card-value" style="font-size:36px;">~$400–460</div>
+          <div class="budget-card-sub">Estimate — varies by spending</div>
+        </div>
+      </div>
+
+      <div class="info-box teal">
+        <div class="info-box-label">💡 Ways to Save</div>
+        <div class="info-box-body">
+          Cook 3–4 meals at the Airbnb (breakfasts + one dinner) to cut meal costs significantly. Split a grocery run when you arrive — eggs, bread, snacks, drinks, and cooler supplies are way cheaper at a Walmart or Publix than buying individually. The pontoon cost is the biggest variable — call ahead and compare rates between Adventures at Sea, Sunshine Watersports, and Shell Island Pontoon Boats.
+        </div>
+      </div>
+
+      <div class="checklist">
+        <div class="checklist-title">📋 Book These ASAP</div>
+        <div class="check-item">
+          <div class="check-num">1</div>
+          <div><strong>Pontoon boat</strong> — full-day 8hr for 8+ people fills up fast in May. Call Adventures at Sea, Sunshine Watersports PC, or Shell Island Pontoon Boats on N. Lagoon Dr.</div>
+        </div>
+        <div class="check-item">
+          <div class="check-num">2</div>
+          <div><strong>Jet ski reservation</strong> — same marina can usually do both on Day 3.</div>
+        </div>
+        <div class="check-item">
+          <div class="check-num">3</div>
+          <div><strong>Airbnb</strong> — already done ✓</div>
+        </div>
+        <div class="check-item">
+          <div class="check-num">4</div>
+          <div><strong>Florida boater's safety certificate</strong> — anyone born after Jan 1, 1988 who operates the boat needs one. Free at <strong>boat-ed.com</strong>, takes ~2 hrs online.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>Made with ❤️ for the crew · PCB May 2025</footer>
+
+  <script>
+    function show(id, btn) {
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      btn.classList.add('active');
+    }
+  </script>
+</body>
+</html>
