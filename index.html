@@ -835,8 +835,8 @@
         <div class="budget-card" style="grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
           <div>
             <div class="budget-card-label">Airbnb</div>
-            <div class="budget-card-value">~$149</div>
-            <div class="budget-card-sub">$1,485 total ÷ 10 · 3 nights</div>
+            <div class="budget-card-value">~$150</div>
+            <div class="budget-card-sub">$1,499 total ÷ 10 · 3 nights</div>
           </div>
           <a href="https://www.airbnb.com/rooms/844408536995065829?adults=10&check_in=2026-05-14&check_out=2026-05-17" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--teal),var(--teal-light));color:#fff;font-size:13px;font-weight:600;padding:9px 16px;border-radius:99px;text-decoration:none;white-space:nowrap;box-shadow:0 4px 12px rgba(13,158,117,0.3);">🏠 View Listing ↗</a>
         </div>
@@ -851,24 +851,24 @@
           <div class="budget-card-sub">$323 total ÷ 10 · 75 HP</div>
         </div>
         <div class="budget-card">
-          <div class="budget-card-label">Jet Skis</div>
-          <div class="budget-card-value">~$117</div>
-          <div class="budget-card-sub">5 × $233.87 (2hr) ÷ 10</div>
+          <div class="budget-card-label">Travel</div>
+          <div class="budget-card-value">~$36</div>
+          <div class="budget-card-sub">Tesla charging ~$38 + 2 flights ($324) = $362 ÷ 10</div>
         </div>
         <div class="budget-card">
-          <div class="budget-card-label">Gas</div>
-          <div class="budget-card-value">~$13</div>
-          <div class="budget-card-sub">$130 total ÷ 10</div>
+          <div class="budget-card-label">Snorkeling Gear</div>
+          <div class="budget-card-value">~$15</div>
+          <div class="budget-card-sub">Rental per person</div>
         </div>
         <div class="budget-card">
           <div class="budget-card-label">St. Andrews</div>
           <div class="budget-card-value">~$2</div>
-          <div class="budget-card-sub">$8/car · 2 cars ÷ 8</div>
+          <div class="budget-card-sub">$8/car · 2–3 cars ÷ 10</div>
         </div>
         <div class="budget-card">
           <div class="budget-card-label">Cooler + Ice</div>
-          <div class="budget-card-value">~$5</div>
-          <div class="budget-card-sub">~$40 total ÷ 8</div>
+          <div class="budget-card-value">~$4</div>
+          <div class="budget-card-sub">~$40 total ÷ 10</div>
         </div>
         <div class="budget-card">
           <div class="budget-card-label">Cooler Supplies</div>
@@ -882,18 +882,40 @@
         </div>
         <div class="budget-card">
           <div class="budget-card-label">Board Games / Cards</div>
-          <div class="budget-card-value">~$5</div>
-          <div class="budget-card-sub">~$40 total ÷ 8</div>
+          <div class="budget-card-value">~$4</div>
+          <div class="budget-card-sub">~$40 total ÷ 10</div>
         </div>
         <div class="budget-card">
           <div class="budget-card-label">Random / Misc</div>
           <div class="budget-card-value">~$20</div>
           <div class="budget-card-sub">Sunscreen, forgotten stuff, etc.</div>
         </div>
-        <div class="budget-card budget-total-card" style="grid-column: 1 / -1;">
-          <div class="budget-card-label">Total per person (excl. Airbnb)</div>
-          <div class="budget-card-value" style="font-size:36px;">~$504</div>
-          <div class="budget-card-sub">Per person · based on actual quoted prices</div>
+
+        <!-- JET SKI OPT-IN CALLOUT -->
+        <div class="budget-card" style="grid-column: 1 / -1; background: linear-gradient(135deg, rgba(74,181,232,0.08), rgba(74,181,232,0.03)); border-color: rgba(74,181,232,0.25);">
+          <div class="budget-card-label" style="color:#1565C0;">🛥️ Jet Skis — Optional Opt-In</div>
+          <div style="display:flex; gap: 12px; flex-wrap: wrap; margin-top: 6px;">
+            <div>
+              <div class="budget-card-value" style="color:#1565C0; font-size:20px;">+$45</div>
+              <div class="budget-card-sub">if you do jet skis</div>
+            </div>
+            <div style="width:1px; background: rgba(74,181,232,0.3); flex-shrink:0;"></div>
+            <div style="font-size: 13px; color: #2E4050; line-height: 1.6; align-self: center;">
+              Not everyone has to join. 5 skis × $233.87 (2hr). Those who opt in split the cost ~$45/person.
+            </div>
+          </div>
+        </div>
+
+        <!-- TWO TOTALS -->
+        <div class="budget-card budget-total-card">
+          <div class="budget-card-label">Without Jet Skis</div>
+          <div class="budget-card-value" style="font-size:32px;">~$426</div>
+          <div class="budget-card-sub">per person</div>
+        </div>
+        <div class="budget-card budget-total-card" style="background: linear-gradient(135deg, #1565C0, #4AB5E8);">
+          <div class="budget-card-label">With Jet Skis</div>
+          <div class="budget-card-value" style="font-size:32px;">~$471</div>
+          <div class="budget-card-sub">per person (opt-in)</div>
         </div>
       </div>
 
@@ -912,7 +934,7 @@
         </div>
         <div class="check-item">
           <div class="check-num">2</div>
-          <div><strong>Jet skis</strong> — Lagoon Pontoon, 5 skis × 2 hrs × $233.87. Book at lagoonpontoon.com.</div>
+          <div><strong>Jet skis (opt-in)</strong> — Lagoon Pontoon, 5 skis × 2 hrs × $233.87. ~$45/person for those who join. Book at lagoonpontoon.com.</div>
         </div>
         <div class="check-item">
           <div class="check-num">3</div>
